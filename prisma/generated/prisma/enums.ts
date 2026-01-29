@@ -9,10 +9,20 @@
 * 🟢 You can import this file directly.
 */
 
-export const bookingStatus = {
-  pending: 'pending',
-  confirmed: 'confirmed',
-  rejected: 'rejected'
+export const UserRole = {
+  STUDENT: 'STUDENT',
+  TUTOR: 'TUTOR',
+  ADMIN: 'ADMIN'
 } as const
 
-export type bookingStatus = (typeof bookingStatus)[keyof typeof bookingStatus]
+export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
+export const BookingStatus = {
+  PENDING: 'PENDING',
+  CONFIRMED: 'CONFIRMED',
+  CANCELLED: 'CANCELLED',
+  COMPLETED: 'COMPLETED'
+} as const
+
+export type BookingStatus = (typeof BookingStatus)[keyof typeof BookingStatus]

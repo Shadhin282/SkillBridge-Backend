@@ -5,14 +5,26 @@ model User {
   emailVerified Boolean   @default(false)
   image         String?
 
-  role String @default("student")
+  role UserRole @default(STUDENT)
 
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
+
+
   sessions      Session[]
   accounts      Account[]
-  tutorProfile  tutorProfile[]
+
+
+  tutorProfile  TutorProfile?
   
+  bookings      Booking[]       @relation("StudentBookings")
+  reviews       Review[]        @relation("StudentReviews")
+  
+  bookingsAsTutor Booking[]     @relation("TutorBookings")
+  reviewsAsTutor  Review[]      @relation("TutorReviews")
+  student StudentProfile[]      @relation("StudentProfileRelation")
+
+
   @@unique([email])
   @@map("user")
 }
@@ -63,4 +75,11 @@ model Verification {
 
   @@index([identifier])
   @@map("verification")
+}
+
+
+enum UserRole {
+      STUDENT 
+      TUTOR 
+      ADMIN
 }

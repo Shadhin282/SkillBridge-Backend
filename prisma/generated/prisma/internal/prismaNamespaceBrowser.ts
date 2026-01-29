@@ -59,7 +59,7 @@ export const ModelName = {
   Category: 'Category',
   Review: 'Review',
   StudentProfile: 'StudentProfile',
-  tutorProfile: 'tutorProfile'
+  TutorProfile: 'TutorProfile'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -140,10 +140,8 @@ export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[k
 export const BookingScalarFieldEnum = {
   id: 'id',
   studentId: 'studentId',
-  studentEmail: 'studentEmail',
   tutorId: 'tutorId',
-  tutorEmail: 'tutorEmail',
-  bookingDate: 'bookingDate',
+  date: 'date',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -155,8 +153,7 @@ export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeo
 export const CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  description: 'description',
-  createdAt: 'createdAt'
+  description: 'description'
 } as const
 
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
@@ -165,13 +162,10 @@ export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typ
 export const ReviewScalarFieldEnum = {
   id: 'id',
   studentId: 'studentId',
-  studentEmail: 'studentEmail',
   tutorId: 'tutorId',
-  tutorEmail: 'tutorEmail',
   rating: 'rating',
-  reviewText: 'reviewText',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  comment: 'comment',
+  createdAt: 'createdAt'
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
@@ -181,7 +175,6 @@ export const StudentProfileScalarFieldEnum = {
   id: 'id',
   name: 'name',
   studentId: 'studentId',
-  studentEmail: 'studentEmail',
   bio: 'bio',
   department: 'department',
   FavroiteSubjects: 'FavroiteSubjects'
@@ -192,16 +185,11 @@ export type StudentProfileScalarFieldEnum = (typeof StudentProfileScalarFieldEnu
 
 export const TutorProfileScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  tutorId: 'tutorId',
-  tutorEmail: 'tutorEmail',
+  userId: 'userId',
   bio: 'bio',
   hourlyRate: 'hourlyRate',
   subjects: 'subjects',
-  availability: 'availability',
-  categoryId: 'categoryId',
-  studentRating: 'studentRating',
-  reviewId: 'reviewId'
+  availability: 'availability'
 } as const
 
 export type TutorProfileScalarFieldEnum = (typeof TutorProfileScalarFieldEnum)[keyof typeof TutorProfileScalarFieldEnum]

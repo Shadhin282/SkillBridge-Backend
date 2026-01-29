@@ -1,21 +1,11 @@
-model tutorProfile {
-    id String @id @default(uuid())
-    name String
-    tutorId String
-    tutorEmail String
-    bio String?
-    hourlyRate Float
-    subjects String[]
-    availability String[]
-    categoryId String
-    studentRating Int
-    reviewId String?
-    
-    review Review? @relation(fields:[reviewId], references: [id])
-    user User @relation(fields: [tutorId], references: [id])
-    
-    category Category @relation(fields: [categoryId], references: [id])
+model TutorProfile {
+    id           String  @id @default(uuid())
+    userId       String  @unique
+    bio          String?
+    hourlyRate   Float?
+    subjects     String? // JSON string or comma separated
+    availability String? // JSON string
 
-    @@index([categoryId])
-    @@index([tutorId])
+    user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+    categories Category[]
 }

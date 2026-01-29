@@ -1,10 +1,9 @@
 model Category {
-    id String @id @default(uuid())
-    name String
+    id          String  @id @default(uuid())
+    name        String  @unique
     description String?
-    createdAt DateTime @default(now())
 
-    tutors tutorProfile[]
+    tutors TutorProfile[]
 
     @@index([name])
 }

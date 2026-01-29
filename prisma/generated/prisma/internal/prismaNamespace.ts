@@ -392,7 +392,7 @@ export const ModelName = {
   Category: 'Category',
   Review: 'Review',
   StudentProfile: 'StudentProfile',
-  tutorProfile: 'tutorProfile'
+  TutorProfile: 'TutorProfile'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1004,76 +1004,76 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    tutorProfile: {
-      payload: Prisma.$tutorProfilePayload<ExtArgs>
-      fields: Prisma.tutorProfileFieldRefs
+    TutorProfile: {
+      payload: Prisma.$TutorProfilePayload<ExtArgs>
+      fields: Prisma.TutorProfileFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.tutorProfileFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload> | null
+          args: Prisma.TutorProfileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.tutorProfileFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload>
+          args: Prisma.TutorProfileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload>
         }
         findFirst: {
-          args: Prisma.tutorProfileFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload> | null
+          args: Prisma.TutorProfileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.tutorProfileFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload>
+          args: Prisma.TutorProfileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload>
         }
         findMany: {
-          args: Prisma.tutorProfileFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload>[]
+          args: Prisma.TutorProfileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload>[]
         }
         create: {
-          args: Prisma.tutorProfileCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload>
+          args: Prisma.TutorProfileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload>
         }
         createMany: {
-          args: Prisma.tutorProfileCreateManyArgs<ExtArgs>
+          args: Prisma.TutorProfileCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.tutorProfileCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload>[]
+          args: Prisma.TutorProfileCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload>[]
         }
         delete: {
-          args: Prisma.tutorProfileDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload>
+          args: Prisma.TutorProfileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload>
         }
         update: {
-          args: Prisma.tutorProfileUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload>
+          args: Prisma.TutorProfileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload>
         }
         deleteMany: {
-          args: Prisma.tutorProfileDeleteManyArgs<ExtArgs>
+          args: Prisma.TutorProfileDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.tutorProfileUpdateManyArgs<ExtArgs>
+          args: Prisma.TutorProfileUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.tutorProfileUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload>[]
+          args: Prisma.TutorProfileUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload>[]
         }
         upsert: {
-          args: Prisma.tutorProfileUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$tutorProfilePayload>
+          args: Prisma.TutorProfileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TutorProfilePayload>
         }
         aggregate: {
           args: Prisma.TutorProfileAggregateArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AggregateTutorProfile>
         }
         groupBy: {
-          args: Prisma.tutorProfileGroupByArgs<ExtArgs>
+          args: Prisma.TutorProfileGroupByArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.TutorProfileGroupByOutputType>[]
         }
         count: {
-          args: Prisma.tutorProfileCountArgs<ExtArgs>
+          args: Prisma.TutorProfileCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.TutorProfileCountAggregateOutputType> | number
         }
       }
@@ -1179,10 +1179,8 @@ export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[k
 export const BookingScalarFieldEnum = {
   id: 'id',
   studentId: 'studentId',
-  studentEmail: 'studentEmail',
   tutorId: 'tutorId',
-  tutorEmail: 'tutorEmail',
-  bookingDate: 'bookingDate',
+  date: 'date',
   status: 'status',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -1194,8 +1192,7 @@ export type BookingScalarFieldEnum = (typeof BookingScalarFieldEnum)[keyof typeo
 export const CategoryScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  description: 'description',
-  createdAt: 'createdAt'
+  description: 'description'
 } as const
 
 export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
@@ -1204,13 +1201,10 @@ export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typ
 export const ReviewScalarFieldEnum = {
   id: 'id',
   studentId: 'studentId',
-  studentEmail: 'studentEmail',
   tutorId: 'tutorId',
-  tutorEmail: 'tutorEmail',
   rating: 'rating',
-  reviewText: 'reviewText',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  comment: 'comment',
+  createdAt: 'createdAt'
 } as const
 
 export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
@@ -1220,7 +1214,6 @@ export const StudentProfileScalarFieldEnum = {
   id: 'id',
   name: 'name',
   studentId: 'studentId',
-  studentEmail: 'studentEmail',
   bio: 'bio',
   department: 'department',
   FavroiteSubjects: 'FavroiteSubjects'
@@ -1231,16 +1224,11 @@ export type StudentProfileScalarFieldEnum = (typeof StudentProfileScalarFieldEnu
 
 export const TutorProfileScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  tutorId: 'tutorId',
-  tutorEmail: 'tutorEmail',
+  userId: 'userId',
   bio: 'bio',
   hourlyRate: 'hourlyRate',
   subjects: 'subjects',
-  availability: 'availability',
-  categoryId: 'categoryId',
-  studentRating: 'studentRating',
-  reviewId: 'reviewId'
+  availability: 'availability'
 } as const
 
 export type TutorProfileScalarFieldEnum = (typeof TutorProfileScalarFieldEnum)[keyof typeof TutorProfileScalarFieldEnum]
@@ -1298,6 +1286,20 @@ export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
+ * Reference to a field of type 'UserRole'
+ */
+export type EnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole'>
+    
+
+
+/**
+ * Reference to a field of type 'UserRole[]'
+ */
+export type ListEnumUserRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserRole[]'>
+    
+
+
+/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -1312,16 +1314,16 @@ export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaM
 
 
 /**
- * Reference to a field of type 'bookingStatus'
+ * Reference to a field of type 'BookingStatus'
  */
-export type EnumbookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'bookingStatus'>
+export type EnumBookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookingStatus'>
     
 
 
 /**
- * Reference to a field of type 'bookingStatus[]'
+ * Reference to a field of type 'BookingStatus[]'
  */
-export type ListEnumbookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'bookingStatus[]'>
+export type ListEnumBookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookingStatus[]'>
     
 
 
@@ -1455,7 +1457,7 @@ export type GlobalOmitConfig = {
   category?: Prisma.CategoryOmit
   review?: Prisma.ReviewOmit
   studentProfile?: Prisma.StudentProfileOmit
-  tutorProfile?: Prisma.tutorProfileOmit
+  tutorProfile?: Prisma.TutorProfileOmit
 }
 
 /* Types for Logging */
