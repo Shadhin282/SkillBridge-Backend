@@ -6,7 +6,7 @@ import { userController } from "./admin.controller";
 const router = express.Router();
 
 router.get('/',userController.getUsers)
-router.patch('/:id',userController.getUsers)
+router.patch('/:id',userController.getUsersById)
 
 
 

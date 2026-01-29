@@ -4,7 +4,7 @@ model User {
   email         String
   emailVerified Boolean   @default(false)
   image         String?
-
+  status    UserStatus  @default(ACTIVE)
   role UserRole @default(STUDENT)
 
   createdAt     DateTime  @default(now())
@@ -82,4 +82,9 @@ enum UserRole {
       STUDENT 
       TUTOR 
       ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
 }
