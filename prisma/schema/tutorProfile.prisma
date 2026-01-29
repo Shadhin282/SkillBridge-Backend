@@ -8,7 +8,11 @@ model tutorProfile {
     subjects String[]
     availability String[]
     categoryId String
-
+    studentRating Int
+    reviewId String?
+    
+    review Review? @relation(fields:[reviewId], references: [id])
+    
     category Category @relation(fields: [categoryId], references: [id])
 
     @@index([categoryId])

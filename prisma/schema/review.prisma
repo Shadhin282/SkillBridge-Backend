@@ -1,5 +1,5 @@
 model Review {
-    id String @id @default(uuid())
+    id String @id @default(uuid()) @unique
     studentId String
     studentEmail String
     tutorId String
@@ -10,7 +10,10 @@ model Review {
     updatedAt DateTime @updatedAt
 
     studentProfile StudentProfile @relation(fields: [studentId], references : [studentId])
-
+   
+    tutorProfile tutorProfile[]
+   
+   
     @@index([studentId])
     @@index([tutorId])
 }
