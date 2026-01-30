@@ -1,6 +1,13 @@
+import { prisma } from "../../lib/prisma"
 
-const getReview = ()=>{
-
+const getReview =async ()=>{
+        const result = await prisma.review.findMany()
+        return result
+}
+const postReview =async (data: string)=>{
+        const result = await prisma.review.create({
+                data  
+        })
 }
 
 
@@ -8,4 +15,5 @@ const getReview = ()=>{
 
 export const reviewsService = {
         getReview,
+        postReview
 } 
