@@ -23,8 +23,17 @@ const postReview = async (req:Request,res: Response)=>{
         try {
                 const {rating, comment} = req.body;
                 const result = await reviewsService.postReview(req.body)
+                 res.status(201).json({
+                        success: true,
+                        message : "Review Data fetch Successfully",
+                        data : result
+                })
         } catch (error) {
-                
+                res.status(501).json({
+                        success: false,
+                        message : "Internal error",
+                        error : error
+                })
         }
 }
 
