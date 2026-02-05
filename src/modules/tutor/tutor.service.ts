@@ -59,11 +59,18 @@ const getTutorById = async (id: string )=>{
 const putTutorAvilability = async (payload:TutorProfile, userId : string) => {
         const result = await prisma.tutorProfile.update({
             where : {
-              id : payload.id,
               authorId : userId
+              
             },
-            data : {...payload, availability : payload.availability as any}
+            
+            data : { 
+           
+              
+       
+              availability : payload.availability as any
+            }
         })
+        return result;
 }
 
 
@@ -76,11 +83,12 @@ const putTutorProfile = async (payload:{id: string;
     categoryName?: string | null;}, userId : string) => {
         const result = await prisma.tutorProfile.update({
             where : {
-              id : payload.id,
+            
               authorId : userId
             },
             data : {...payload}
         })
+        return result;
 }
 
 

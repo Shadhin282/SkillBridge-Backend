@@ -98,7 +98,20 @@ const putTutorAvilability : RequestHandler = async (req, res, next) => {
             return res.send("Unathorized")
           }
             const result = await tutorService.putTutorAvilability(req.body,req.user.id as string)
-    } catch (error) {
+          if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "Tutor availability not update",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Tutor availability updated successfully",
+      data: result,
+    });
+          
+          } catch (error) {
       next(error)
     }
 }
@@ -110,8 +123,21 @@ const putTutorProfile : RequestHandler = async (req, res, next) => {
             return res.send("Unathorized")
           }
             const result = await tutorService.putTutorProfile(req.body,req.user.id as string)
-  } catch (error) {
-    
+          if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "Tutor profile not update.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Tutor profile updated successfully",
+      data: result,
+    });
+  
+            } catch (error) {
+    next(error)
   }
 }
 export const tutorController = {

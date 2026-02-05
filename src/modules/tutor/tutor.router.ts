@@ -9,7 +9,7 @@ router.get('/',tutorController.getTutor)
 router.get('/:id', tutorController.getTutorById)
 
 router.post('/profile',auth(UserRole.TUTOR), tutorController.postTutor)
-router.post('/profile',auth(UserRole.TUTOR), tutorController.putTutorProfile)
+router.put('/profile',auth(UserRole.TUTOR), tutorController.putTutorProfile)
 
 router.put('/availability',auth(UserRole.TUTOR), tutorController.putTutorAvilability)
 
