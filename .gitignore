@@ -5,3 +5,6 @@ node_modules
 seedAdmin.ts
 
 /generated/prisma
+
+.vercel
+.env*.local
