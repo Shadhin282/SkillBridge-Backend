@@ -6,6 +6,7 @@ model Review {
   comment   String?
   createdAt DateTime @default(now())
   
+  student User @relation(fields: [studentId], references: [id])
   tutor TutorProfile @relation(fields: [tutorId], references: [id], onDelete: Cascade)
  
   

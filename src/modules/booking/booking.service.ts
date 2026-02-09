@@ -2,7 +2,16 @@ import { BookingStatus } from "../../../prisma/generated/prisma/enums"
 import { prisma } from "../../lib/prisma"
 
 const getBooking = async ()=>{
-        const result = await prisma.booking.findMany()
+        const result = await prisma.booking.findMany({
+                include : {
+                        student: true,
+                        tutor: {
+                                include:{
+                                        user: true
+                                }
+                        }
+                }
+        })
         return result;
 }
 

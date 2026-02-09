@@ -5,6 +5,20 @@ const getReview =async ()=>{
         return result
 }
 
+const getReviewById = async (id: string)=>{
+        console.log('service',id)
+        const result = await prisma.review.findMany({
+                where : {
+                       tutorId: id
+                },
+                include : {
+                        student : true
+                }
+        })
+        return result ;
+}
+
+
 
 const postReview =async (payload:{ rating : number, comment: string, tutorId: string}, userid : string)=>{
       
@@ -32,5 +46,6 @@ const postReview =async (payload:{ rating : number, comment: string, tutorId: st
 
 export const reviewsService = {
         getReview,
-        postReview
+        postReview,
+        getReviewById
 } 

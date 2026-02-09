@@ -15,6 +15,7 @@ model User {
   accounts      Account[]
 
 
+  review Review[]
   tutor TutorProfile?
   student StudentProfile?      @relation("StudentProfileRelation")
   booking Booking?

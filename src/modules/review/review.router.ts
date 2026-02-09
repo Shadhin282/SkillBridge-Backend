@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.post('/',auth(UserRole.STUDENT),reviewsController.postReview)
 router.get('/',reviewsController.getReview)
+router.get('/:id',reviewsController.getReviewById)
 
 
 
