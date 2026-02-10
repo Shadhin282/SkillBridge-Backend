@@ -13,11 +13,15 @@ import { categoriesRoute } from "./modules/categories/categories.router";
 
 const app = express();
 
-// const allowedOrigins = [
-//   process.env.FRONTEND_URL || "http://localhost:3000",
-//   process.env.PROD_APP_URL, // Production frontend URL
-// ].filter(Boolean);
 
+// Configure CORS to allow both production and Vercel preview deployments
+// const allowedOrigins = [
+//   process.env.FRONTEND_URL || "http://localhost:4000",
+//   process.env.PROD_APP_URL, // Production frontend URL
+//   "http://localhost:3000",
+//   "http://localhost:4000",
+//   "http://localhost:5000",
+// ].filter(Boolean); // Remove undefined values
 
 // app.use(
 //   cors({
@@ -28,7 +32,7 @@ const app = express();
 //       // Check if origin is in allowedOrigins or matches Vercel preview pattern
 //       const isAllowed =
 //         allowedOrigins.includes(origin) ||
-//         /^https:\/\/next-blog-client.*\.vercel\.app$/.test(origin) ||
+//         /^https:\/\/skillbridge-two-flame.*\.vercel\.app$/.test(origin) ||
 //         /^https:\/\/.*\.vercel\.app$/.test(origin); // Any Vercel deployment
 
 //       if (isAllowed) {
@@ -45,7 +49,10 @@ const app = express();
 // );
 
 
-app.use(cors())
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:3000", // client side url
+    credentials: true
+}))
 
 app.use(express.json());
 

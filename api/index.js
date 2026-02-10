@@ -285,6 +285,20 @@ var auth = betterAuth({
       clientSecret: process.env.GOOGLE_CLIENT_SECRET
     }
   }
+  //    session: {
+  //   cookieCache: {
+  //     enabled: true,
+  //     maxAge: 5 * 60, // 5 minutes
+  //   },
+  // },
+  // advanced: {
+  //   cookiePrefix: "better-auth",
+  //   useSecureCookies: process.env.NODE_ENV === "production",
+  //   crossSubDomainCookies: {
+  //     enabled: false,
+  //   },
+  //   disableCSRFCheck: true, // Allow requests without Origin header (Postman, mobile apps, etc.)
+  // },
 });
 
 // src/modules/tutor/tutor.router.ts
@@ -1119,7 +1133,8 @@ var categoriesRoute = router5;
 // src/app.ts
 var app = express6();
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  // client side url
   credentials: true
 }));
 app.use(express6.json());
