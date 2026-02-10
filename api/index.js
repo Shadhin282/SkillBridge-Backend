@@ -261,6 +261,8 @@ var auth = betterAuth({
     provider: "postgresql"
     // or "mysql", "postgresql", ...etc
   }),
+  secret: process.env.BETTER_AUTH_SECRET,
+  baseURL: process.env.BETTER_AUTH_URL,
   trustedOrigins: [process.env.FRONTEND_URL],
   user: {
     additionalFields: {
@@ -1132,11 +1134,15 @@ var categoriesRoute = router5;
 
 // src/app.ts
 var app = express6();
-app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:3000",
-  // client side url
-  credentials: true
-}));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://skillbridge-two-flame.vercel.app"
+    ],
+    credentials: true
+  })
+);
 app.use(express6.json());
 app.all("/api/auth/*splat", toNodeHandler(auth));
 app.get("/api/me", async (req, res) => {

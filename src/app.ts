@@ -14,45 +14,18 @@ import { categoriesRoute } from "./modules/categories/categories.router";
 const app = express();
 
 
-// Configure CORS to allow both production and Vercel preview deployments
-// const allowedOrigins = [
-//   process.env.FRONTEND_URL || "http://localhost:4000",
-//   process.env.PROD_APP_URL, // Production frontend URL
-//   "http://localhost:3000",
-//   "http://localhost:4000",
-//   "http://localhost:5000",
-// ].filter(Boolean); // Remove undefined values
 
-// app.use(
-//   cors({
-//     origin: (origin, callback) => {
-//       // Allow requests with no origin (mobile apps, Postman, etc.)
-//       if (!origin) return callback(null, true);
-
-//       // Check if origin is in allowedOrigins or matches Vercel preview pattern
-//       const isAllowed =
-//         allowedOrigins.includes(origin) ||
-//         /^https:\/\/skillbridge-two-flame.*\.vercel\.app$/.test(origin) ||
-//         /^https:\/\/.*\.vercel\.app$/.test(origin); // Any Vercel deployment
-
-//       if (isAllowed) {
-//         callback(null, true);
-//       } else {
-//         callback(new Error(`Origin ${origin} not allowed by CORS`));
-//       }
-//     },
-//     credentials: true,
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-//     allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
-//     exposedHeaders: ["Set-Cookie"],
-//   }),
-// );
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://skillbridge-two-flame.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
 
-app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000", // client side url
-    credentials: true
-}))
 
 app.use(express.json());
 
@@ -88,3 +61,56 @@ app.use(notFound);
 app.use(errorHandler)
 
 export default app;
+
+
+
+
+
+
+
+
+// Configure CORS to allow both production and Vercel preview deployments
+// const allowedOrigins = [
+//   process.env.FRONTEND_URL || "http://localhost:4000",
+//   process.env.PROD_APP_URL, // Production frontend URL
+//   "http://localhost:3000",
+//   "http://localhost:4000",
+//   "http://localhost:5000",
+// ].filter(Boolean); // Remove undefined values
+
+// app.use(
+//   cors({
+//     origin: (origin, callback) => {
+//       // Allow requests with no origin (mobile apps, Postman, etc.)
+//       if (!origin) return callback(null, true);
+
+//       // Check if origin is in allowedOrigins or matches Vercel preview pattern
+//       const isAllowed =
+//         allowedOrigins.includes(origin) ||
+//         /^https:\/\/skillbridge-two-flame.*\.vercel\.app$/.test(origin) ||
+//         /^https:\/\/.*\.vercel\.app$/.test(origin); // Any Vercel deployment
+
+//       if (isAllowed) {
+//         callback(null, true);
+//       } else {
+//         callback(new Error(`Origin ${origin} not allowed by CORS`));
+//       }
+//     },
+//     credentials: true,
+//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Authorization", "Cookie"],
+//     exposedHeaders: ["Set-Cookie"],
+//   }),
+// );
+
+// app.use(cors({
+//     origin: process.env.FRONTEND_URL || "http://localhost:3000", // client side url
+//     credentials: true
+// }))
+
+// const allowedOrigins = [
+//   "http://localhost:3000",
+//   "https://skillbridge-two-flame.vercel.app"
+// ];
+
+// app.use(cors());
