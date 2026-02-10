@@ -295,21 +295,23 @@ var auth = betterAuth({
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET
     }
+  },
+  session: {
+    cookieCache: {
+      enabled: true,
+      maxAge: 5 * 60
+      // 5 minutes
+    }
+  },
+  advanced: {
+    cookiePrefix: "better-auth",
+    useSecureCookies: process.env.NODE_ENV === "production",
+    crossSubDomainCookies: {
+      enabled: false
+    },
+    disableCSRFCheck: true
+    // Allow requests without Origin header (Postman, mobile apps, etc.)
   }
-  //    session: {
-  //   cookieCache: {
-  //     enabled: true,
-  //     maxAge: 5 * 60, // 5 minutes
-  //   },
-  // },
-  // advanced: {
-  //   cookiePrefix: "better-auth",
-  //   useSecureCookies: process.env.NODE_ENV === "production",
-  //   crossSubDomainCookies: {
-  //     enabled: false,
-  //   },
-  //   disableCSRFCheck: true, // Allow requests without Origin header (Postman, mobile apps, etc.)
-  // },
 });
 
 // src/modules/tutor/tutor.router.ts

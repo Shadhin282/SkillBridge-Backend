@@ -42,13 +42,12 @@ export const auth = betterAuth({
     },
   },
   advanced: {
-    cookiePrefix: "better-auth",
-    useSecureCookies: process.env.NODE_ENV === "production",
-    crossSubDomainCookies: {
-        
-      enabled: false,
-    },
-    disableCSRFCheck: true, // Allow requests without Origin header (Postman, mobile apps, etc.)
+  cookiePrefix: "better-auth",
+  useSecureCookies: true,
+  crossSubDomainCookies: {
+    enabled: false,
   },
+},
+
 
 });
