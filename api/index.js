@@ -251,9 +251,15 @@ globalThis["__dirname"] = path.dirname(fileURLToPath(import.meta.url));
 var PrismaClient = getPrismaClientClass();
 
 // src/lib/prisma.ts
-var connectionString = `${process.env.DATABASE_URL}`;
+var globalForPrisma = globalThis;
+var connectionString = process.env.DATABASE_URL;
 var adapter = new PrismaPg({ connectionString });
-var prisma = new PrismaClient({ adapter });
+var prisma = globalForPrisma.prisma ?? new PrismaClient({
+  adapter
+});
+if (process.env.NODE_ENV !== "production") {
+  globalForPrisma.prisma = prisma;
+}
 
 // src/lib/auth.ts
 var auth = betterAuth({
@@ -263,7 +269,10 @@ var auth = betterAuth({
   }),
   secret: process.env.BETTER_AUTH_SECRET,
   baseURL: process.env.BETTER_AUTH_URL,
-  trustedOrigins: [process.env.FRONTEND_URL],
+  trustedOrigins: [
+    "http://localhost:3000",
+    "https://skillbridge-two-flame.vercel.app"
+  ],
   user: {
     additionalFields: {
       role: {
